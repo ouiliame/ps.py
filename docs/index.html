@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ps.py documentation &mdash; ps.py 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/print.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/theme_extras.js"></script>
+    <link rel="top" title="ps.py 0.0.1 documentation" href="#" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="#">
+          <span>ps.py 0.0.1 documentation</span></a></h1>
+        <h2 class="heading"><span>ps.py documentation</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="#">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="ps-py-documentation">
+<h1>ps.py documentation<a class="headerlink" href="#ps-py-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-ps">
+<span id="ps-module"></span><h2>ps module<a class="headerlink" href="#module-ps" title="Permalink to this headline">¶</a></h2>
+<p>This module contains facility classes and functions to
+access PowerSchool and change the XML data into a more
+workable format.</p>
+<dl class="class">
+<dt id="ps.Connection">
+<em class="property">class </em><tt class="descclassname">ps.</tt><tt class="descname">Connection</tt><a class="headerlink" href="#ps.Connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a temporary browser that connects to PowerSchool using HTTP.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="s">&#39;http://powerschool.ausd.net&#39;</span><span class="p">,</span> <span class="s">&#39;12345&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">student</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_student</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">student</span><span class="o">.</span><span class="n">first_name</span>
+<span class="go">&quot;Johnny&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">student</span><span class="o">.</span><span class="n">gpa</span>
+<span class="go">&quot;2.5&quot;</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="ps.Connection.close">
+<tt class="descname">close</tt><big>(</big><big>)</big><a class="headerlink" href="#ps.Connection.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the browser instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ps.Connection.error">
+<tt class="descname">error</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Connection.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>(string) error message from PowerSchool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ps.Connection.get_student">
+<tt class="descname">get_student</tt><big>(</big><big>)</big><a class="headerlink" href="#ps.Connection.get_student" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Must be logged in to work.</p>
+</div>
+<p>Create a student from the login information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ps.Connection.get_xml">
+<tt class="descname">get_xml</tt><big>(</big><big>)</big><a class="headerlink" href="#ps.Connection.get_xml" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Must be logged in to work.</p>
+</div>
+<p>Downloads the XML data from PowerSchool and returns its contents.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ps.Connection.logged_in">
+<tt class="descname">logged_in</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Connection.logged_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>(bool) returns whether Connection was able to log in</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ps.Connection.login">
+<tt class="descname">login</tt><big>(</big><em>url</em>, <em>username</em>, <em>password</em><big>)</big><a class="headerlink" href="#ps.Connection.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs into <em>url</em> with credentials <em>username</em> and <em>password</em>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>url</strong> (<em>string</em>) &#8211; PowerSchool URL to login into. ex. <a class="reference external" href="http://powerschool.ausd.net/">http://powerschool.ausd.net/</a></li>
+<li><strong>username</strong> (<em>string</em>) &#8211; PowerSchool username (usually a Student ID#)</li>
+<li><strong>password</strong> (<em>string</em>) &#8211; PowerSchool password</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>True</strong> if login was successful. Otherwise, <strong>False</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ps.Connection.student">
+<tt class="descname">student</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Connection.student" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Student) a Student from the Connection</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ps.Connection.xml_data">
+<tt class="descname">xml_data</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Connection.xml_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>(string) downloaded XML data</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ps.Student">
+<em class="property">class </em><tt class="descclassname">ps.</tt><tt class="descname">Student</tt><big>(</big><em>loadstring=None</em><big>)</big><a class="headerlink" href="#ps.Student" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Student is a data structure that holds:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="24%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>first_name</td>
+<td>(string)</td>
+<td>First name</td>
+</tr>
+<tr class="row-odd"><td>last_name</td>
+<td>(string)</td>
+<td>Last name</td>
+</tr>
+<tr class="row-even"><td>gender</td>
+<td>(string)</td>
+<td>Gender (Male/Female)</td>
+</tr>
+<tr class="row-odd"><td>gpa</td>
+<td>(string)</td>
+<td>Grade point average</td>
+</tr>
+<tr class="row-even"><td>courses</td>
+<td>(course[])</td>
+<td>Courses</td>
+</tr>
+</tbody>
+</table>
+<p>A course is a dictionary containing:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="17%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>(string)</td>
+<td>Course name</td>
+</tr>
+<tr class="row-odd"><td>teacher</td>
+<td>(string)</td>
+<td>Course teacher (LastName, FirstName)</td>
+</tr>
+<tr class="row-even"><td>letter_grade</td>
+<td>(string)</td>
+<td>Letter grade received (A, B, C, etc.)</td>
+</tr>
+<tr class="row-odd"><td>number_grade</td>
+<td>(string)</td>
+<td>Number grade received (percentage)</td>
+</tr>
+<tr class="row-even"><td>in_progress</td>
+<td>(bool)</td>
+<td>Sees if course is to be included</td>
+</tr>
+<tr class="row-odd"><td>assignments</td>
+<td>(assn[])</td>
+<td>Assignments</td>
+</tr>
+<tr class="row-even"><td>categories</td>
+<td>(string[])</td>
+<td>Categories of assignments for course</td>
+</tr>
+</tbody>
+</table>
+<p>An assn (assignment) is a dictionary containing:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="13%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>(string)</td>
+<td>Assignment name</td>
+</tr>
+<tr class="row-odd"><td>category</td>
+<td>(string)</td>
+<td>Category of assignment (test, project, etc.)</td>
+</tr>
+<tr class="row-even"><td>due_date</td>
+<td>(string)</td>
+<td>Due date (Month/Day/Year format)</td>
+</tr>
+<tr class="row-odd"><td>score</td>
+<td>(float)</td>
+<td>Score gotten on assignment</td>
+</tr>
+<tr class="row-even"><td>out_of</td>
+<td>(float)</td>
+<td>Total amount of points possible</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loadstring</strong> (<em>string</em>) &#8211; XML data to load Student info</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="ps.Student.courses">
+<tt class="descname">courses</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Student.courses" title="Permalink to this definition">¶</a></dt>
+<dd><p>(course[]) Course list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ps.Student.filter_courses">
+<tt class="descname">filter_courses</tt><big>(</big><em>cutoff_date</em><big>)</big><a class="headerlink" href="#ps.Student.filter_courses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets each course&#8217;s <em>in_progress</em> attribute to <strong>True</strong> if it is
+between <em>cutoff_date</em> and today.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cutoff_date</strong> (<em>datetime.date</em>) &#8211; Courses between this day (inclusive) will be included.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ps.Student.first_name">
+<tt class="descname">first_name</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Student.first_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>(string) First name</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ps.Student.gender">
+<tt class="descname">gender</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Student.gender" title="Permalink to this definition">¶</a></dt>
+<dd><p>(string) Gender</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ps.Student.gpa">
+<tt class="descname">gpa</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Student.gpa" title="Permalink to this definition">¶</a></dt>
+<dd><p>(string) Grade point average</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ps.Student.last_name">
+<tt class="descname">last_name</tt><em class="property"> = None</em><a class="headerlink" href="#ps.Student.last_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>(string) Last name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ps.Student.load">
+<tt class="descname">load</tt><big>(</big><em>loadstring</em><big>)</big><a class="headerlink" href="#ps.Student.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a Student with XML data received from loadstring.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>loadstring</strong> (<em>string</em>) &#8211; XML data to load Student from</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ps.Student.to_excel">
+<tt class="descname">to_excel</tt><big>(</big><big>)</big><a class="headerlink" href="#ps.Student.to_excel" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Requires that the Student has been loaded.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Creates a xlwt Workbook of the Student&#8217;s grades.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ps.Student.to_json">
+<tt class="descname">to_json</tt><big>(</big><big>)</big><a class="headerlink" href="#ps.Student.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Requires that the Student has been loaded.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Student in JSON format.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ps.Student.z_to_json">
+<tt class="descname">z_to_json</tt><big>(</big><em>strength=9</em><big>)</big><a class="headerlink" href="#ps.Student.z_to_json" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Requires that the Student has been loaded.</p>
+</div>
+<p>Does the same thing as to_json, but compresses the information with
+maximum strength before returning it.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="#">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2013, alpacas.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
