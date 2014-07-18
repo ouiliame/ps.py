@@ -1,0 +1,54 @@
+\begin{theindex}
+\def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
+
+  \bigletter C
+  \item close() (ps.Connection method), \hyperpage{1}
+  \item Connection (class in ps), \hyperpage{1}
+  \item courses (ps.Student attribute), \hyperpage{2}
+
+  \indexspace
+  \bigletter E
+  \item error (ps.Connection attribute), \hyperpage{1}
+
+  \indexspace
+  \bigletter F
+  \item filter\_courses() (ps.Student method), \hyperpage{2}
+  \item first\_name (ps.Student attribute), \hyperpage{2}
+
+  \indexspace
+  \bigletter G
+  \item gender (ps.Student attribute), \hyperpage{2}
+  \item get\_student() (ps.Connection method), \hyperpage{1}
+  \item get\_xml() (ps.Connection method), \hyperpage{1}
+  \item gpa (ps.Student attribute), \hyperpage{2}
+
+  \indexspace
+  \bigletter L
+  \item last\_name (ps.Student attribute), \hyperpage{2}
+  \item load() (ps.Student method), \hyperpage{3}
+  \item logged\_in (ps.Connection attribute), \hyperpage{1}
+  \item login() (ps.Connection method), \hyperpage{1}
+
+  \indexspace
+  \bigletter P
+  \item ps (module), \hyperpage{1}
+
+  \indexspace
+  \bigletter S
+  \item Student (class in ps), \hyperpage{2}
+  \item student (ps.Connection attribute), \hyperpage{2}
+
+  \indexspace
+  \bigletter T
+  \item to\_excel() (ps.Student method), \hyperpage{3}
+  \item to\_json() (ps.Student method), \hyperpage{3}
+
+  \indexspace
+  \bigletter X
+  \item xml\_data (ps.Connection attribute), \hyperpage{2}
+
+  \indexspace
+  \bigletter Z
+  \item z\_to\_json() (ps.Student method), \hyperpage{3}
+
+\end{theindex}

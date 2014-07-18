@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+	<title>ps</title>	<link rel="stylesheet" href="http://kevinburke.bitbucket.org/markdowncss/markdown.css"/>
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/googlecode.min.css">
+	<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<h1>ps.py</h1>
+<p>The heart of ScorePortal is its ability to automatically fetch grades from PowerSchool and to transform the information into a workable format. <strong>ps.py</strong> is a PowerSchool library inspired by ScorePortal that facilitates PowerSchool automation and XML parsing within Python.</p>
+<h2>Requirements</h2>
+<p><strong>ps.py</strong> requires that the system have the <strong>mechanize</strong> and <strong>xlwt</strong> modules installed. You can easily install it through:</p>
+<p><code>$ pip install mechanize</code></p> 
+<p><code>$ pip install xlwt</code></p>
+<p>The dependencies are included with the distribution.</p>
+
+<h2>Example</h2>
+<p>This example shows how one can use <strong>ps.py</strong> to login to PowerSchool and fetch grades.</p>
+<pre><code>import ps
+
+# Credentials
+URL = 'http://powerschool.ausd.net/'
+USERNAME = '12345'
+PASSWORD = 'j83nl3a'
+
+# Connect to PowerSchool
+conn = ps.Connection()
+
+# check if logged in
+if conn.login(URL, USERNAME, PASSWORD):
+
+    # get Student instance
+    student = conn.get_student()
+
+    # output a JSON file
+    with open('12345.json', 'w') as file:
+        file.write(student.to_json())
+
+    # process info
+    print "Hi there, " + student.first_name
+    print "Your GPA: " + student.gpa
+    print "Your classes:"
+
+    for course in student.courses:
+        print course.name, course.letter_grade, course.number_grade
+        print "Assignments:"
+        for assn in course.assignments:
+            print assn.due_date, assn.category, assn.name
+
+else:
+    print 'Could not log in: ' + conn.error
+
+# we're done, close the object.
+conn.close()
+</code></pre>
+
+<h2>API reference</h2>
+<p>A complete API reference for this project is available in:</p>
+<ul>
+	<li><a href="doc/_build/html">HTML</a></li>
+	<li><a href="doc/_build/latex/pspy.pdf">PDF</a></li>
+</ul>
+</body>
+</html>

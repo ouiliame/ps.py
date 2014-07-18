@@ -1,0 +1,21 @@
+\indexentry{ps (module)|hyperpage}{1}
+\indexentry{Connection (class in ps)|hyperpage}{1}
+\indexentry{close() (ps.Connection method)|hyperpage}{1}
+\indexentry{error (ps.Connection attribute)|hyperpage}{1}
+\indexentry{get\_student() (ps.Connection method)|hyperpage}{1}
+\indexentry{get\_xml() (ps.Connection method)|hyperpage}{1}
+\indexentry{logged\_in (ps.Connection attribute)|hyperpage}{1}
+\indexentry{login() (ps.Connection method)|hyperpage}{1}
+\indexentry{student (ps.Connection attribute)|hyperpage}{2}
+\indexentry{xml\_data (ps.Connection attribute)|hyperpage}{2}
+\indexentry{Student (class in ps)|hyperpage}{2}
+\indexentry{courses (ps.Student attribute)|hyperpage}{2}
+\indexentry{filter\_courses() (ps.Student method)|hyperpage}{2}
+\indexentry{first\_name (ps.Student attribute)|hyperpage}{2}
+\indexentry{gender (ps.Student attribute)|hyperpage}{2}
+\indexentry{gpa (ps.Student attribute)|hyperpage}{2}
+\indexentry{last\_name (ps.Student attribute)|hyperpage}{2}
+\indexentry{load() (ps.Student method)|hyperpage}{3}
+\indexentry{to\_excel() (ps.Student method)|hyperpage}{3}
+\indexentry{to\_json() (ps.Student method)|hyperpage}{3}
+\indexentry{z\_to\_json() (ps.Student method)|hyperpage}{3}
