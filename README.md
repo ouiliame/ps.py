@@ -5,7 +5,9 @@ A PowerSchool authentication &amp; data fetching library implemented in Python.
 
 Inspired by [ScorePortal](scoreportal.org).
 
-More details & API reference [here](http://ouiliame.github.io/ps.py)
+More details & API reference [here](http://ouiliame.github.io/ps.py).
+
+***NOTE:*** This was written more than a year ago, and last I checked it was working fine. However, PowerSchool may have undergone upgrades which could disrupt the functionality of this library. Also, I was only able to test it with AUSD's PowerSchool, so it may or may not work for other districts.
 
 ## Example ##
 This example shows how one can use **ps.py** to login to PowerSchool and fetch grades.
