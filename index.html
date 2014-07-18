@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>ps.py by ouiliame</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>ps.py</h1>
+        <h2>A PowerSchool authentication &amp; data fetching library implemented in Python.</h2>
+        <a href="https://github.com/ouiliame/ps.py" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>The heart of ScorePortal is its ability to automatically fetch grades from PowerSchool and to transform the information into a workable format. <strong>ps.py</strong> is a PowerSchool library inspired by ScorePortal and facilitates PowerSchool automation and XML parsing within Python.</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p><strong>ps.py</strong> requires that the system have the <strong>mechanize</strong> and <strong>xlwt</strong> modules installed. You can easily install them through:</p>
+
+<p><code>$ pip install mechanize</code></p>
+
+<p><code>$ pip install mechanize</code></p>
+
+<h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>This example shows how one can use <strong>ps.py</strong> to login to PowerSchool and fetch grades.</p>
+
+<div class="highlight highlight-python"><pre><span class="kn">import</span> <span class="nn">ps</span>
+
+<span class="c"># Credentials</span>
+<span class="n">URL</span> <span class="o">=</span> <span class="s">'http://powerschool.ausd.net/'</span>
+<span class="n">USERNAME</span> <span class="o">=</span> <span class="s">'12345'</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s">'j83nl3a'</span>
+
+<span class="c"># Connect to PowerSchool</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+
+<span class="c"># check if logged in</span>
+<span class="k">if</span> <span class="n">conn</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">URL</span><span class="p">,</span> <span class="n">USERNAME</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">):</span>
+
+    <span class="c"># get Student instance</span>
+    <span class="n">student</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_student</span><span class="p">()</span>
+
+    <span class="c"># output a JSON file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'12345.json'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+        <span class="nb">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">student</span><span class="o">.</span><span class="n">to_json</span><span class="p">())</span>
+
+    <span class="c"># process info</span>
+    <span class="k">print</span> <span class="s">"Hi there, "</span> <span class="o">+</span> <span class="n">student</span><span class="o">.</span><span class="n">first_name</span>
+    <span class="k">print</span> <span class="s">"Your GPA: "</span> <span class="o">+</span> <span class="n">student</span><span class="o">.</span><span class="n">gpa</span>
+    <span class="k">print</span> <span class="s">"Your classes:"</span>
+
+    <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">student</span><span class="o">.</span><span class="n">courses</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">course</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">course</span><span class="o">.</span><span class="n">letter_grade</span><span class="p">,</span> <span class="n">course</span><span class="o">.</span><span class="n">number_grade</span>
+        <span class="k">print</span> <span class="s">"Assignments:"</span>
+        <span class="k">for</span> <span class="n">assn</span> <span class="ow">in</span> <span class="n">course</span><span class="o">.</span><span class="n">assignments</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">assn</span><span class="o">.</span><span class="n">due_date</span><span class="p">,</span> <span class="n">assn</span><span class="o">.</span><span class="n">category</span><span class="p">,</span> <span class="n">assn</span><span class="o">.</span><span class="n">name</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">'Could not log in: '</span> <span class="o">+</span> <span class="n">conn</span><span class="o">.</span><span class="n">error</span>
+
+<span class="c"># we're done, close the object.</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/ouiliame/ps.py/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ouiliame/ps.py/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ouiliame/ps.py"></a> is maintained by <a href="https://github.com/ouiliame">ouiliame</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
