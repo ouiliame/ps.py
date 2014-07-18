@@ -10,7 +10,7 @@ More details & API reference [here](http://ouiliame.github.io/ps.py)
 ## Example ##
 This example shows how one can use **ps.py** to login to PowerSchool and fetch grades.
 
-
+```python
     import ps
 
     # Credentials
@@ -47,3 +47,4 @@ This example shows how one can use **ps.py** to login to PowerSchool and fetch g
 
     # we're done, close the object.
     conn.close()
+```
