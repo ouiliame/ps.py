@@ -3,7 +3,7 @@ ps.py
 
 A PowerSchool authentication &amp; data fetching library implemented in Python.
 
-Inspired by [ScorePortal](scoreportal.org).
+Inspired by [ScorePortal](http://www.scoreportal.org).
 
 More details & API reference [here](http://ouiliame.github.io/ps.py).
 
