@@ -28,7 +28,7 @@ class Connection:
 
     def __init__(self):
         self.browser = mechanize.Browser()
-        
+        self.browser.set_handle_robots(False)
         self.logged_in = False
         """ (bool) returns whether Connection was able to log in """
 
